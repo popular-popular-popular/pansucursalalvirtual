@@ -1,232 +1,68 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panadería Sucursal | Pan artesanal en Bogotá</title>
-    <meta name="description" content="Disfruta del mejor pan artesanal, pastelería fresca y café colombiano. Panadería Sucursal, calidad y sabor en cada bocado.">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>Panadería Sucursal | Pan artesanal en Bogotá</title>
+<meta name="description" content="Panadería artesanal en Bogotá. Pan fresco, pastelería y café colombiano. Visítanos o haz tu pedido.">
 
-    <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
-    <style>
-        :root {
-            --primary: #c0392b;
-            --secondary: #f39c12;
-            --dark: #2c3e50;
-            --light: #ffffff;
-            --gray-bg: #f8f9fa;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            color: var(--dark);
-        }
-
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 5%;
-            background: white;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary);
-            text-decoration: none;
-        }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--dark);
-        }
-
-        .hero {
-            height: 90vh;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
-            url('https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1400&q=80');
-            background-size: cover;
-            display: flex;
-            align-items: center;
-            color: white;
-        }
-
-        .hero-content {
-            padding: 0 5%;
-            max-width: 600px;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .btn {
-            background: var(--primary);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 25px;
-            text-decoration: none;
-        }
-
-        .section-padding {
-            padding: 4rem 5%;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-        }
-
-        .card-img {
-            height: 200px;
-            background-size: cover;
-        }
-
-        .card-content {
-            padding: 1rem;
-        }
-
-        footer {
-            background: var(--dark);
-            color: white;
-            padding: 2rem 5%;
-        }
-
-        #cookie-banner {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            background: black;
-            color: white;
-            padding: 1rem;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        @media(max-width:768px){
-            .nav-links{
-                display:none;
-                flex-direction: column;
-                background:white;
-                position:absolute;
-                top:60px;
-                right:5%;
-                padding:1rem;
-            }
-
-            .nav-links.active{
-                display:flex;
-            }
-        }
-    </style>
+<style>
+body{font-family:Inter,sans-serif;margin:0;color:#2c3e50}
+header{display:flex;justify-content:space-between;padding:15px 5%;background:#fff}
+a{text-decoration:none;color:#2c3e50}
+.hero{padding:80px 5%;background:#eee}
+.btn{background:#c0392b;color:#fff;padding:10px 20px;border-radius:20px}
+.section{padding:50px 5%}
+footer{background:#2c3e50;color:#fff;padding:30px 5%}
+</style>
 </head>
 
 <body>
 
 <header>
-    <nav class="navbar">
-        <a href="#" class="logo"><i class="fa-solid fa-wheat-awn"></i> Panadería</a>
-
-        <ul class="nav-links" id="menu">
-            <li><a href="#">Inicio</a></li>
-            <li><a href="#">Nosotros</a></li>
-            <li><a href="#">Productos</a></li>
-            <li><a href="#">Contacto</a></li>
-        </ul>
-
-        <div onclick="toggleMenu()">
-            <i class="fa-solid fa-bars"></i>
-        </div>
-    </nav>
+<h2>Panadería Sucursal</h2>
+<nav>
+<a href="#inicio">Inicio</a> |
+<a href="#nosotros">Nosotros</a> |
+<a href="#productos">Productos</a> |
+<a href="#contacto">Contacto</a>
+</nav>
 </header>
 
-<section class="hero">
-    <div class="hero-content">
-        <h1>El auténtico sabor artesanal en cada bocado</h1>
-        <p>Disfruta pan recién horneado, pastelería deliciosa y café colombiano preparado con pasión.</p>
-        <a href="produc.html" class="btn">Ver productos</a>
-    </div>
+<section class="hero" id="inicio">
+<h1>Pan artesanal en Bogotá</h1>
+<p>Elaboramos pan fresco, pastelería y café colombiano de alta calidad.</p>
+<a href="productos.html" class="btn">Ver productos</a>
 </section>
 
-<section class="section-padding">
-    <h2 class="section-title">Nuestras especialidades</h2>
+<section class="section" id="nosotros">
+<h2>Sobre nosotros</h2>
+<p>Somos una panadería ubicada en Bogotá dedicada a ofrecer productos frescos elaborados diariamente con ingredientes de alta calidad.</p>
+</section>
 
-    <div class="grid-3">
-        <div class="card">
-            <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1590794056226-79ef3a8147e1');"></div>
-            <div class="card-content">
-                <h3>Pan artesanal</h3>
-                <p>Pan fresco todos los días, hecho con recetas tradicionales.</p>
-            </div>
-        </div>
+<section class="section" id="productos">
+<h2>Productos</h2>
+<p>Ofrecemos pan artesanal, pasteles, tortas y café colombiano.</p>
+</section>
 
-        <div class="card">
-            <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1563716113315-76954b4f5351');"></div>
-            <div class="card-content">
-                <h3>Pastelería</h3>
-                <p>Dulces, tortas y postres irresistibles para cualquier ocasión.</p>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1497935586351-b67a49e012bf');"></div>
-            <div class="card-content">
-                <h3>Café colombiano</h3>
-                <p>El mejor café para acompañar cada momento.</p>
-            </div>
-        </div>
-    </div>
+<section class="section" id="contacto">
+<h2>Contacto</h2>
+<p><strong>Dirección:</strong> Calle 123 #45-67, Bogotá, Colombia</p>
+<p><strong>Teléfono:</strong> +57 300 000 0000</p>
+<p><strong>Email:</strong> contacto@panaderiasucursal.com</p>
+<p><strong>Horario:</strong> Lunes a sábado 7:00 am - 8:00 pm</p>
 </section>
 
 <footer>
-    <p>© 2026 Panadería Sucursal - Todos los derechos reservados</p>
+<p>© 2026 Panadería Sucursal</p>
+<p>
+<a href="privacidad.html">Política de privacidad</a> |
+<a href="terminos.html">Términos y condiciones</a>
+</p>
 </footer>
-
-<div id="cookie-banner">
-    <p>Usamos cookies para mejorar tu experiencia.</p>
-    <button onclick="acceptCookies()">Aceptar</button>
-</div>
-
-<script>
-function toggleMenu(){
-    document.getElementById("menu").classList.toggle("active");
-}
-
-function acceptCookies(){
-    document.getElementById("cookie-banner").style.display="none";
-}
-</script>
 
 </body>
 </html>
